@@ -24,7 +24,7 @@ class _HeaderState extends State<Header> {
                         borderRadius: BorderRadius.vertical(
                           bottom: Radius.circular(40),
                         ),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             offset: Offset(0, 0.1),
                             blurRadius: 5,
@@ -97,6 +97,7 @@ class _HeaderState extends State<Header> {
                   height: 50,
                   width: size.width,
                   child: Card(
+                    color: Colors.white,
                     elevation: 3,
                     margin: EdgeInsets.symmetric(horizontal: 50),
                     shape: RoundedRectangleBorder(

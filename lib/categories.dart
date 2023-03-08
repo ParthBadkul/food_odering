@@ -6,6 +6,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  int currentselectItem = 0;
   @override
   Widget build(BuildContext context) {
     int items = 10;
@@ -26,27 +27,44 @@ class _CategoriesState extends State<Categories> {
                           EdgeInsets.only(left: index == 0 ? 0 : 5, right: 10),
                       height: 90,
                       width: 90,
-                      child: Card(
-                        child: Icon(
-                          Icons.fastfood,
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                        elevation: 3,
-                        margin: EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentselectItem = index;
+                          });
+                        },
+                        child: Card(
+                          color: index == currentselectItem
+                              ? Color.fromARGB(255, 170, 145, 75)
+                              : Colors.white,
+                          child: Icon(
+                            Icons.fastfood,
+                            color: index == currentselectItem
+                                ? Color.fromARGB(255, 39, 32, 12)
+                                : Colors.black.withOpacity(0.7),
+                          ),
+                          elevation: 3,
+                          margin: EdgeInsets.all(10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     )
                   ],
                 ),
                 Positioned(
+                  bottom: 0,
                   child: Container(
                     margin:
                         EdgeInsets.only(left: index == 0 ? 0 : 5, right: 10),
-                    width: 0,
+                    width: 90,
                     child: Row(
-                      children: [Text("data")],
+                      children: [
+                        Spacer(),
+                        Text("Burger"),
+                        Spacer(),
+                      ],
                     ),
                   ),
                 )
